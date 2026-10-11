@@ -50,7 +50,8 @@ test-fast:
 		tests/voice_platform/test_action_optional_inputs.py \
 		tests/voice_platform/test_quickwin_routing_truth.py \
 		tests/voice_platform/test_playground_mock_context.py \
-		tests/voice_platform/test_call109_anti_repeat.py
+		tests/voice_platform/test_call109_anti_repeat.py \
+		tests/voice_platform/test_security_bootstrap.py
 
 setup-check:
 	python3 scripts/check_setup.py

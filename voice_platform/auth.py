@@ -45,11 +45,11 @@ if not GOOGLE_CLIENT_ID:
         stacklevel=2,
     )
 
-# Secret key for signing our JWT tokens. MUST be changed in production.
-# Reads from env, falls back to the same default as config.py
+# Secret key for signing our JWT tokens. May be replaced at startup with an
+# ephemeral value when ALLOW_DEV_LOGIN is on and JWT_SECRET is unset/weak.
 JWT_SECRET = settings.jwt_secret
 
-# JWT algorithm — HS256 is a symmetric HMAC algorithm (simple, secure enough for FYP)
+# JWT algorithm — HS256 (symmetric HMAC)
 JWT_ALGORITHM = "HS256"
 
 # How long our access tokens are valid (short-lived)

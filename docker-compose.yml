@@ -4,7 +4,9 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_USER: voia
-      POSTGRES_PASSWORD: voia_password
+      # Local default is intentional for Tier 0. Production profile requires
+      # an explicit POSTGRES_PASSWORD (see app-prod DATABASE_URL).
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-voia_password}
       POSTGRES_DB: voia
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -47,13 +49,13 @@ services:
     environment:
       DOCKER_ENV: "1"
       OLLAMA_BASE_URL: http://host.docker.internal:11434/v1
-      DATABASE_URL: postgresql+asyncpg://voia:voia_password@db:5432/voia
+      DATABASE_URL: postgresql+asyncpg://voia:${POSTGRES_PASSWORD:-voia_password}@db:5432/voia
       REDIS_URL: redis://redis:6379
       REDISHOST: redis
       REDISPORT: "6379"
-      # Local OSS onboarding: Dev Login without Google OAuth.
-      # Override to false in shared/staging hosts.
-      ALLOW_DEV_LOGIN: "true"
+      # Local OSS onboarding only. Never use playground/development profiles
+      # on a public host without overriding this to false + a strong JWT_SECRET.
+      ALLOW_DEV_LOGIN: ${ALLOW_DEV_LOGIN:-true}
       # BASE_URL: intentionally not overridden — let env_file value pass through
       # so ngrok auto-tunnel works when BASE_URL is empty in .env
     ports:
@@ -84,6 +86,9 @@ services:
       - "3001:3001"
 
   # ── Production services (use: docker compose --profile production up) ──────
+  # Requires in the environment / .env:
+  #   POSTGRES_PASSWORD  JWT_SECRET (≥32 chars)  CORS_ALLOWED_ORIGINS
+  # Dev login is forced off. Weak JWT_SECRET causes the app to refuse startup.
   app-prod:
     profiles: [production]
     build:
@@ -99,14 +104,14 @@ services:
       - ./voice_platform/.env
     environment:
       DOCKER_ENV: "1"
-      DATABASE_URL: postgresql+asyncpg://voia:voia_password@db:5432/voia
+      DATABASE_URL: postgresql+asyncpg://voia:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD for production}@db:5432/voia
       REDIS_URL: redis://redis:6379
       REDISHOST: redis
       REDISPORT: "6379"
-      # Set BASE_URL to your public domain in production:
+      ALLOW_DEV_LOGIN: "false"
+      REQUIRE_TWILIO_WEBHOOK_SIGNATURE: "true"
+      # JWT_SECRET and CORS_ALLOWED_ORIGINS must come from env_file / host env.
       # BASE_URL: https://voice.yourdomain.com
-      # JWT_SECRET: <strong-random-secret>
-      # CORS_ALLOWED_ORIGINS: https://app.yourdomain.com
     ports:
       - "3000:3000"
     extra_hosts:

@@ -24,3 +24,10 @@ Full strategy: [VOIA_OPEN_SOURCE_STRATEGY.md](./VOIA_OPEN_SOURCE_STRATEGY.md) ·
 ## Pitch
 
 > Design the call like a flowchart. Run the same graph in the playground and on the phone. Bring your own keys.
+
+## Production security defaults
+
+- No forgeable `JWT_SECRET` ships in code; production refuses weak/empty secrets  
+- `docker compose --profile production` forces `ALLOW_DEV_LOGIN=false` and Twilio signature checks  
+- `POSTGRES_PASSWORD` must be set for the production profile  
+- Encryption salt / `.env` are gitignored — set `ENCRYPTION_KEY` for durable key vaults

@@ -173,27 +173,10 @@ async def lifespan(application: FastAPI):
             "Set CORS_ALLOWED_ORIGINS=https://yourdomain.com in .env for production."
         )
 
-    # M-10 / JWT weak default check — block startup in production
-    _weak_jwt_defaults = {
-        "voia-fyp-secret-change-in-production",
-        "voia-fyp-secret-2026-change-in-production",
-        "secret",
-        "changeme",
-    }
-    if settings.jwt_secret in _weak_jwt_defaults or len(settings.jwt_secret) < 32:
-        if not settings.allow_dev_login:
-            logger.error(
-                "❌ JWT_SECRET is too weak or too short (must be at least 32 bytes). "
-                "Refusing to start. Set a strong random secret in .env: "
-                "python -c \"import secrets; print(secrets.token_hex(32))\""
-            )
-            sys.exit(1)
-        else:
-            logger.warning(
-                "⚠️  JWT_SECRET is too weak or too short. "
-                "Tokens can be forged. Set a strong random secret in .env: "
-                "python -c \"import secrets; print(secrets.token_hex(32))\""
-            )
+    from voice_platform import auth as _auth
+    from voice_platform.security_bootstrap import ensure_jwt_secret
+
+    ensure_jwt_secret(settings, _auth)
 
     # C-2/C-3: Google integration architecture note
     logger.info(

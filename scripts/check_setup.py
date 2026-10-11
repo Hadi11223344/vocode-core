@@ -118,14 +118,28 @@ def main() -> int:
                 "or OPENAI_API_BASE for Ollama"
             )
 
-    jwt = _get(file_vals, "JWT_SECRET", "voia-fyp-secret-change-in-production")
-    weak = {"", "change-me-to-a-random-secret", "voia-fyp-secret-change-in-production"}
+    jwt = _get(file_vals, "JWT_SECRET", "")
+    weak = {
+        "",
+        "change-me-to-a-random-secret",
+        "voia-fyp-secret-change-in-production",
+        "voia-fyp-secret-2026-change-in-production",
+        "secret",
+        "changeme",
+    }
     if jwt in weak or len(jwt) < 32:
-        warnings.append(
-            "JWT_SECRET is weak/default — fine for local Tier 0; change before production"
-        )
+        if allow_dev:
+            warnings.append(
+                "JWT_SECRET unset/weak — Tier 0 will mint an ephemeral secret "
+                "(tokens reset on restart). Set JWT_SECRET for stable local auth."
+            )
+        else:
+            errors.append(
+                "JWT_SECRET must be ≥32 random characters when ALLOW_DEV_LOGIN=false "
+                '(python -c "import secrets; print(secrets.token_hex(32))")'
+            )
     else:
-        print("  [ok] JWT_SECRET looks non-default")
+        print("  [ok] JWT_SECRET looks strong")
 
     redis_url = _get(file_vals, "REDIS_URL", "redis://localhost:6380")
     r_host, r_port = _parse_redis(redis_url)

@@ -143,8 +143,10 @@ class PlatformSettings(BaseSettings):
     google_oauth_redirect_uri: Optional[str] = None
 
     # ── JWT ──────────────────────────────────────────────────────────
-    # Secret for signing our JWT tokens. CHANGE THIS IN PRODUCTION!
-    jwt_secret: str = "voia-fyp-secret-change-in-production"
+    # No forgeable default ships in code. For local Tier 0, either set
+    # JWT_SECRET in .env (≥32 chars) or enable ALLOW_DEV_LOGIN (server
+    # generates an ephemeral secret for the process lifetime).
+    jwt_secret: str = ""
 
     # ── Encryption ───────────────────────────────────────────────────
     # Fernet key for encrypting API keys at rest.

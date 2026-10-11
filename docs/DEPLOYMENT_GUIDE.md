@@ -61,7 +61,7 @@ cp voice_platform/.env.example voice_platform/.env
 | `BASE_URL` | — | Public URL for Twilio webhooks (e.g. `https://your-domain.com`) |
 | `NGROK_AUTH_TOKEN` | — | Auto-start ngrok tunnel in development |
 | `GOOGLE_CLIENT_ID` | — | Google OAuth client ID for frontend auth |
-| `JWT_SECRET` | `voia-fyp-secret-change-me` | **MUST change in production** |
+| `JWT_SECRET` | _(empty)_ | **Required ≥32 chars in production** (app refuses weak/empty when `ALLOW_DEV_LOGIN=false`) |
 | `CORS_ALLOWED_ORIGINS` | `*` | Comma-separated list of allowed origins |
 | `REDIS_URL` | `redis://localhost:6379` | Redis connection string |
 | `GROQ_API_KEY` | — | Groq LLM API key (primary LLM provider) |

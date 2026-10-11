@@ -93,8 +93,11 @@ cd frontend && npm install && npm run dev   # :3001
 ### Production
 
 ```bash
+export POSTGRES_PASSWORD="$(openssl rand -hex 16)"   # required
+# In voice_platform/.env: JWT_SECRET (≥32 chars), ALLOW_DEV_LOGIN unset/false,
+# CORS_ALLOWED_ORIGINS=https://your-app, REQUIRE_TWILIO_WEBHOOK_SIGNATURE=true
 docker compose --profile production up -d
-# See docs/DEPLOYMENT_GUIDE.md — set a strong JWT_SECRET, never ALLOW_DEV_LOGIN
+# See docs/DEPLOYMENT_GUIDE.md — weak JWT_SECRET refuses startup; dev login is forced off
 ```
 
 ---
@@ -139,7 +142,7 @@ vocode-core/
 |----------|------|-------------|
 | `ALLOW_DEV_LOGIN` | 0 | `true` for local Dev Login (never in prod) |
 | `OPENROUTER_API_KEY` / `GROQ_API_KEY` / `OPENAI_API_KEY` | 0 | At least one LLM path |
-| `JWT_SECRET` | 0 | Change in production (≥32 chars) |
+| `JWT_SECRET` | 0/prod | ≥32 chars required when `ALLOW_DEV_LOGIN=false`; optional on Tier 0 (ephemeral) |
 | `REDIS_URL` | 0 | Compose host: `redis://localhost:6380` |
 | `DATABASE_URL` | 0/prod | Compose host: `postgresql+asyncpg://voia:voia_password@localhost:5433/voia` |
 | `DEEPGRAM_API_KEY` | 1 | Speech-to-text |
