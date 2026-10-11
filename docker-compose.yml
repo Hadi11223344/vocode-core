@@ -1,0 +1,136 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: voia
+      POSTGRES_PASSWORD: voia_password
+      POSTGRES_DB: voia
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U voia -d voia"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6380:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    # playground = Tier 0 (dashboard + flow playground)
+    # development = Tier 0/1 (same stack; add Twilio keys for live calls)
+    profiles: [playground, development]
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    env_file:
+      - ./voice_platform/.env
+    environment:
+      DOCKER_ENV: "1"
+      OLLAMA_BASE_URL: http://host.docker.internal:11434/v1
+      DATABASE_URL: postgresql+asyncpg://voia:voia_password@db:5432/voia
+      REDIS_URL: redis://redis:6379
+      REDISHOST: redis
+      REDISPORT: "6379"
+      # Local OSS onboarding: Dev Login without Google OAuth.
+      # Override to false in shared/staging hosts.
+      ALLOW_DEV_LOGIN: "true"
+      # BASE_URL: intentionally not overridden — let env_file value pass through
+      # so ngrok auto-tunnel works when BASE_URL is empty in .env
+    ports:
+      - "3000:3000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./voice_platform:/app/voice_platform
+      - ./vocode:/app/vocode
+      - ./scripts:/app/scripts
+      - ./examples:/app/examples
+      - ./tests:/app/tests
+
+  frontend:
+    profiles: [playground, development]
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - app
+    env_file:
+      - ./voice_platform/.env
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:3000
+      NEXT_PUBLIC_GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+    ports:
+      - "3001:3001"
+
+  # ── Production services (use: docker compose --profile production up) ──────
+  app-prod:
+    profiles: [production]
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.production
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    env_file:
+      - ./voice_platform/.env
+    environment:
+      DOCKER_ENV: "1"
+      DATABASE_URL: postgresql+asyncpg://voia:voia_password@db:5432/voia
+      REDIS_URL: redis://redis:6379
+      REDISHOST: redis
+      REDISPORT: "6379"
+      # Set BASE_URL to your public domain in production:
+      # BASE_URL: https://voice.yourdomain.com
+      # JWT_SECRET: <strong-random-secret>
+      # CORS_ALLOWED_ORIGINS: https://app.yourdomain.com
+    ports:
+      - "3000:3000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      default:
+        aliases:
+          - app
+
+  frontend-prod:
+    profiles: [production]
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - app-prod
+    environment:
+      DOCKER_ENV: "1"
+      NEXT_PUBLIC_API_URL: http://localhost:3000
+      NEXT_PUBLIC_GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+    ports:
+      - "3001:3001"
+
+volumes:
+  postgres_data:
+  redis_data:

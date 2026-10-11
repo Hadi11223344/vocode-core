@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: VOIA docs & strategy
+    url: https://github.com/Hadi11223344/vocode-core/blob/main/docs/OPEN_CORE.md
+    about: Open-core boundary, Tier 0 setup, and contribution model
+  - name: Upstream Vocode Discord
+    url: https://discord.gg/NaU4mMgcnC
+    about: Community help for the Vocode streaming SDK layer

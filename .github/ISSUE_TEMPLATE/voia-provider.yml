@@ -1,0 +1,41 @@
+name: New provider
+description: Propose an LLM, STT, TTS, or telephony provider adapter.
+title: "[Provider]: "
+labels: ["enhancement", "provider"]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Provider kind
+      options:
+        - LLM
+        - STT
+        - TTS
+        - Telephony
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: Provider name
+      placeholder: e.g. cartesia, assemblyai
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why this provider
+      description: Use case and whether an OpenAI-compatible API already covers it.
+    validations:
+      required: true
+  - type: textarea
+    id: env
+    attributes:
+      label: Env / key scheme
+      placeholder: PROVIDER_API_KEY=...
+  - type: checkboxes
+    id: willing
+    attributes:
+      label: Contribution
+      options:
+        - label: I can open a PR following docs/extensions/add-provider.md

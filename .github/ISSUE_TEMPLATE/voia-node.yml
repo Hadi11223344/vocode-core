@@ -1,0 +1,42 @@
+name: New flow node
+description: Propose or track a new conversational-flow / workflow node type.
+title: "[Node]: "
+labels: ["enhancement", "flow-node"]
+body:
+  - type: input
+    id: node-name
+    attributes:
+      label: Proposed node type id
+      description: Snake_case id used in React Flow `nodeType` (e.g. `log_event`).
+    validations:
+      required: true
+  - type: dropdown
+    id: handler-kind
+    attributes:
+      label: Runtime handler kind
+      options:
+        - conversation (waits for caller speech)
+        - condition (branch yes/no)
+        - action / integration (side effects)
+        - control (trigger/end/delay/note-style)
+        - Unsure
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Behavior
+      description: What the node does in playground and on a live call. Call out any parity risks.
+    validations:
+      required: true
+  - type: textarea
+    id: config
+    attributes:
+      label: Config fields
+      placeholder: e.g. message (string), max_retries (int)
+  - type: checkboxes
+    id: willing
+    attributes:
+      label: Contribution
+      options:
+        - label: I can open a PR following docs/extensions/add-node.md

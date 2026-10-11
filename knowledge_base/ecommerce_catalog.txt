@@ -1,0 +1,362 @@
+StyleHub.pk — Online Fashion Store Catalog
+Store Overview
+
+StyleHub.pk is a Lahore-based online fashion retailer specializing in Pakistani ethnic wear, Western casual wear, and fusion outfits for men, women, and children. Founded in 2018, the store serves customers across Pakistan with delivery in 2–3 days for Lahore and 5–7 days for other cities. All products are sourced from local manufacturers in Faisalabad, Karachi, and Sialkot.
+
+Website: www.stylehub.pk
+
+WhatsApp Orders: 0300-9876543
+
+Customer Service: 042-3789-0123
+
+Delivery Charges:
+
+Free for orders above PKR 3,000
+PKR 250 for orders below PKR 3,000
+
+Return Policy:
+
+7-day exchange for size-related issues
+No returns on sale items
+Women's Collection
+Unstitched Fabric (Suits)
+WU-001 — Lawn Embroidery 3-Piece
+Product ID: WU-001
+Fabric: Lawn
+Price: PKR 3,500
+Available Colors:
+White
+Pink
+Sky Blue
+Mint
+WU-002 — Chiffon Eid Collection
+Product ID: WU-002
+Fabric: Chiffon
+Price: PKR 5,500
+Available Colors:
+Gold
+Maroon
+Emerald
+WU-003 — Cotton Summer Basic
+Product ID: WU-003
+Fabric: Cotton
+Price: PKR 2,200
+Available Colors:
+Yellow
+Peach
+Lavender
+WU-004 — Silk Party Wear
+Product ID: WU-004
+Fabric: Silk
+Price: PKR 8,500
+Available Colors:
+Black
+Navy
+Wine
+WU-005 — Linen Winter Collection
+Product ID: WU-005
+Fabric: Linen
+Price: PKR 4,500
+Available Colors:
+Grey
+Olive
+Rust
+WU-006 — Organza Festive Suit
+Product ID: WU-006
+Fabric: Organza
+Price: PKR 6,500
+Available Colors:
+Coral
+Ivory
+Teal
+WU-007 — Khaddar Casual
+Product ID: WU-007
+Fabric: Khaddar
+Price: PKR 2,800
+Available Colors:
+Brown
+Mustard
+Beige
+WU-008 — Velvet Wedding Edition
+Product ID: WU-008
+Fabric: Velvet
+Price: PKR 12,000
+Available Colors:
+Burgundy
+Royal Blue
+Plum
+Ready-to-Wear (Kurtas & Tops)
+WR-001 — Embroidered Long Kurti
+Product ID: WR-001
+Size Range: XS–XXL
+Price: PKR 2,800
+Style:
+A-line
+Side slits
+WR-002 — Cotton Casual Kurti
+Product ID: WR-002
+Size Range: XS–XXL
+Price: PKR 1,800
+Style:
+Straight cut
+WR-003 — Chiffon Party Top
+Product ID: WR-003
+Size Range: XS–XL
+Price: PKR 3,200
+Style:
+Peplum
+Full sleeves
+WR-004 — Denim Fusion Kurti
+Product ID: WR-004
+Size Range: S–XL
+Price: PKR 2,500
+Style:
+Western-Pakistani fusion
+WR-005 — Silk Formal Shirt
+Product ID: WR-005
+Size Range: S–L
+Price: PKR 4,500
+Style:
+Collared
+Button-down
+WR-006 — Lawn Daily Wear Set
+Product ID: WR-006
+Size Range: XS–XXL
+Price: PKR 3,000
+Includes:
+Kurti
+Shalwar
+WR-007 — Net Overlay Maxi
+Product ID: WR-007
+Size Range: XS–L
+Price: PKR 5,500
+Style:
+Floor-length
+Back zip
+WR-008 — Linen Summer Tunic
+Product ID: WR-008
+Size Range: S–XL
+Price: PKR 2,200
+Style:
+High-low hem
+Bottom Wear
+WB-001 — Cotton Shalwar
+Product ID: WB-001
+Size Range: S–XXL
+Price: PKR 800
+WB-002 — Tulip Shalwar
+Product ID: WB-002
+Size Range: S–XL
+Price: PKR 1,200
+WB-003 — Straight Pants
+Product ID: WB-003
+Size Range: XS–XXL
+Price: PKR 1,500
+WB-004 — Cigarette Pants
+Product ID: WB-004
+Size Range: XS–L
+Price: PKR 1,800
+WB-005 — Palazzo Pants
+Product ID: WB-005
+Size Range: S–XL
+Price: PKR 1,600
+WB-006 — Churidar Pajama
+Product ID: WB-006
+Size Range: S–XXL
+Price: PKR 900
+WB-007 — Embroidered Gharara
+Product ID: WB-007
+Size Range: S–L
+Price: PKR 3,500
+WB-008 — Women's Jeans
+Product ID: WB-008
+Size Range: 24–34
+Price: PKR 2,500
+Men's Collection
+Kurta & Shalwar Kameez
+MK-001 — Classic White Kurta
+Product ID: MK-001
+Fabric: Cotton
+Size Range: S–XXL
+Price: PKR 1,800
+MK-002 — Embroidered Eid Kurta
+Product ID: MK-002
+Fabric: Cotton
+Size Range: S–XXL
+Price: PKR 3,500
+MK-003 — Silk Formal Kurta
+Product ID: MK-003
+Fabric: Silk
+Size Range: S–XL
+Price: PKR 5,500
+MK-004 — Linen Summer Kurta
+Product ID: MK-004
+Fabric: Linen
+Size Range: S–XXL
+Price: PKR 2,800
+MK-005 — Waistcoat Set (Kurta + Vest)
+Product ID: MK-005
+Fabric: Cotton
+Size Range: S–XL
+Price: PKR 4,500
+MK-006 — Sherwani Style Kurta
+Product ID: MK-006
+Fabric: Jamawar
+Size Range: S–L
+Price: PKR 6,500
+MK-007 — Casual Shalwar Kameez
+Product ID: MK-007
+Fabric: Lawn
+Size Range: S–XXL
+Price: PKR 2,200
+MK-008 — Pathani Suit
+Product ID: MK-008
+Fabric: Cotton
+Size Range: S–XXL
+Price: PKR 3,000
+Western Wear
+MW-001 — Casual T-Shirt
+Product ID: MW-001
+Size Range: S–XXL
+Price: PKR 1,200
+MW-002 — Polo Shirt
+Product ID: MW-002
+Size Range: S–XXL
+Price: PKR 1,800
+MW-003 — Formal Dress Shirt
+Product ID: MW-003
+Size Range: S–XL
+Price: PKR 2,500
+MW-004 — Denim Jeans
+Product ID: MW-004
+Size Range: 28–40
+Price: PKR 3,000
+MW-005 — Chinos
+Product ID: MW-005
+Size Range: 28–38
+Price: PKR 2,800
+MW-006 — Hoodie
+Product ID: MW-006
+Size Range: S–XL
+Price: PKR 2,200
+MW-007 — Casual Blazer
+Product ID: MW-007
+Size Range: S–XL
+Price: PKR 8,500
+MW-008 — Waistcoat
+Product ID: MW-008
+Size Range: S–XL
+Price: PKR 3,500
+Kids' Collection
+KK-001 — Boys Shalwar Kameez
+Product ID: KK-001
+Size Range: 2–12 years
+Price: PKR 1,500
+KK-002 — Girls Lawn Frock
+Product ID: KK-002
+Size Range: 2–12 years
+Price: PKR 1,800
+KK-003 — Kids Eid Special Set
+Product ID: KK-003
+Size Range: 3–10 years
+Price: PKR 2,500
+KK-004 — School Uniform Shirt
+Product ID: KK-004
+Size Range: 4–14 years
+Price: PKR 800
+KK-005 — School Uniform Pants
+Product ID: KK-005
+Size Range: 4–14 years
+Price: PKR 700
+KK-006 — Kids Casual T-Shirt
+Product ID: KK-006
+Size Range: 2–10 years
+Price: PKR 600
+KK-007 — Kids Jeans
+Product ID: KK-007
+Size Range: 3–12 years
+Price: PKR 1,200
+KK-008 — Baby Romper Set
+Product ID: KK-008
+Size Range: 0–2 years
+Price: PKR 1,000
+Accessories
+AC-001 — Chiffon Dupatta
+Product ID: AC-001
+Price: PKR 1,500
+AC-002 — Silk Dupatta
+Product ID: AC-002
+Price: PKR 2,500
+AC-003 — Wool Stole/Shawl
+Product ID: AC-003
+Price: PKR 3,500
+AC-004 — Leather Belt
+Product ID: AC-004
+Price: PKR 1,800
+AC-005 — Scarf
+Product ID: AC-005
+Price: PKR 1,200
+AC-006 — Hair Accessories Set
+Product ID: AC-006
+Price: PKR 500
+AC-007 — Artificial Jewelry Set
+Product ID: AC-007
+Price: PKR 2,500
+AC-008 — Clutch Bag
+Product ID: AC-008
+Price: PKR 3,500
+Delivery & Policies
+Delivery Areas
+Lahore
+Delivery Time: 2–3 business days
+Same-day delivery available for an additional PKR 500
+Karachi, Islamabad & Rawalpindi
+Delivery Time: 3–5 business days
+Other Cities
+Delivery Time: 5–7 business days
+Payment Methods
+Cash on Delivery (COD) available for orders under PKR 15,000
+JazzCash
+EasyPaisa
+Bank Transfer
+Credit Card
+Debit Card
+Return & Exchange Policy
+7-day exchange available for size-related issues.
+Product must be unworn and have original tags attached.
+Sale or discounted items cannot be returned.
+Exchange Process:
+Send a photo of the issue via WhatsApp.
+Receive approval.
+Courier pickup is arranged.
+Replacement product is shipped.
+Return shipping fee:
+Customer pays PKR 250 for courier pickup.
+Order Tracking
+Tracking number is sent via SMS or WhatsApp within 24 hours after order confirmation.
+Track your order at:
+www.stylehub.pk/track
+Customer service hours:
+9:00 AM to 9:00 PM (Daily)
+Seasonal Sales & Offers
+Current Promotions
+Summer Clearance
+30% off on all Lawn Suits:
+WU-001
+WU-003
+Eid Special Offer
+Buy any 2 suits and receive 1 Dupatta free.
+Student Discount
+Extra 10% off with a valid student ID.
+First Order Offer
+15% discount for new customers.
+Promo Code: WELCOME15
+Upcoming Sales
+Independence Day Sale (August)
+Up to 50% off.
+Winter Collection Launch (October)
+Early Bird Discount: 20% off.
+Black Friday Sale (November)
+Site-wide discount of 40%.
+End of Season Sale (December)
+Clearance discounts of up to 60%.

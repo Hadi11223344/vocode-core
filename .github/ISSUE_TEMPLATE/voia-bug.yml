@@ -1,0 +1,60 @@
+name: VOIA Bug
+description: Report a bug in the VOIA platform (dashboard, flows, playground, telephony).
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for filing a bug. For questions, prefer GitHub Discussions if available.
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Tier where it failed
+      options:
+        - Tier 0 — Playground / local
+        - Tier 1 — Live Twilio call
+        - Tier 2 — Campaigns / integrations
+        - Unknown
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Expected vs actual behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction steps
+      placeholder: |
+        1. docker compose --profile playground up -d
+        2. Dev Login
+        3. ...
+    validations:
+      required: true
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Surface
+      options:
+        - Flow playground
+        - Workflow editor
+        - Live call / Twilio
+        - Auth / setup
+        - Integrations
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: providers
+    attributes:
+      label: Providers (if relevant)
+      placeholder: e.g. OpenRouter + Deepgram + Twilio
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / graph id / call id
+      description: Redact secrets and PII.

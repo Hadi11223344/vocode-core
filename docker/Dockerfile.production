@@ -1,0 +1,63 @@
+# ============================================================================
+# VOIA Voice Platform — Production Dockerfile (backend only)
+# ============================================================================
+# Build:   docker build -f docker/Dockerfile.production -t voia-platform .
+# Run:     docker run --env-file .env -p 3000:3000 voia-platform
+#
+# The frontend is built separately — see docker-compose.yml (frontend service)
+# ============================================================================
+
+# ── Stage 1: Builder ────────────────────────────────────────────────────────
+FROM python:3.11-bullseye AS builder
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        libportaudio2 libportaudiocpp0 portaudio19-dev \
+        libasound-dev libsndfile1-dev ffmpeg \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY pyproject.toml README.md ./
+COPY vocode/ ./vocode/
+COPY voice_platform/ ./voice_platform/
+RUN pip install --no-cache-dir -e ".[synthesizers,transcribers]"
+RUN pip install --no-cache-dir "twilio>=9.1.0,<10.0.0"
+
+# ── Stage 2: Runtime ────────────────────────────────────────────────────────
+FROM python:3.11-bullseye AS runtime
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        libportaudio2 libportaudiocpp0 libasound2 libsndfile1 ffmpeg curl \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+# Copy installed packages from builder
+COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
+COPY --from=builder /usr/local/bin /usr/local/bin
+RUN python -m nltk.downloader -d /usr/local/share/nltk_data punkt punkt_tab
+
+# Copy application code
+COPY vocode/ ./vocode/
+COPY voice_platform/ ./voice_platform/
+COPY knowledge_base/ ./knowledge_base/
+
+# Create non-root user for security
+RUN useradd --create-home appuser && chown -R appuser:appuser /app
+USER appuser
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+    CMD curl -f http://localhost:3000/health || exit 1
+
+EXPOSE 3000
+
+# Run with uvicorn (production settings)
+CMD ["python", "-m", "uvicorn", "voice_platform.main:app", \
+     "--host", "0.0.0.0", "--port", "3000", \
+     "--workers", "1", "--log-level", "info"]

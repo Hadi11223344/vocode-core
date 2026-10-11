@@ -1,0 +1,9 @@
+VOIA
+Copyright (c) 2024–2026 VOIA contributors
+
+This product includes software developed as part of the Vocode project
+(https://github.com/vocodedev/vocode-core), Copyright (c) 2023 Ajay Raj,
+licensed under the MIT License.
+
+The VOIA platform layer (`voice_platform/`, `frontend/`, and related docs/scripts)
+is provided under the MIT License; see LICENSE.
